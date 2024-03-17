@@ -1,0 +1,119 @@
+<nav class="sticky top-0 border border-slate-300">
+  <div class="m-auto max-w-[1400px]">
+    <div
+      class="flex items-center justify-center py-6 px-6 duration-300"
+      id="navbar"
+    >
+      <a class="flex-1 text-3xl font-bold" href="/"> Cesar Camacho </a>
+      <ul class="hidden justify-end gap-16 md:flex">
+        <li class="flex-1">
+          <a
+            class="flex-1 rounded-xl px-5 py-[10px] duration-150 ease-in hover:bg-slate-800 hover:text-white"
+            href="https://github.com/Xysar"
+            target="_blank"
+          >
+            Github
+          </a>
+        </li>
+        <li class="flex-1">
+          <a
+            class="rounded-xl px-5 py-[10px] duration-150 ease-in hover:bg-slate-800 hover:text-white"
+            href="https://www.linkedin.com/in/cesarcamacho760/"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li class="flex-1">
+          <a
+            class="rounded-xl px-5 py-[10px] duration-150 ease-in hover:bg-slate-800 hover:text-white"
+            href="resume"
+          >
+            Resume
+          </a>
+        </li>
+        <li class="w-32 flex-1">
+          <a href="" class=""> Portfolio </a>
+        </li>
+      </ul>
+      <div class="flex flex-1 justify-end md:hidden">
+        <button id="mobile-menu-button" class="z-[1] flex items-center">
+          <img
+            src="menu.svg"
+            alt="Menu"
+            class="h-14 w-14 cursor-pointer object-contain p-2"
+          />
+        </button>
+      </div>
+    </div>
+    <ul
+      id="mobile-menu"
+      class="none -mt-[300px] duration-300 flex-col bg-slate-500 pt-24"
+    >
+      <li class="bg-slate-500 text-center">
+        <a
+          class="inline-block w-full bg-slate-100 px-10 py-2 duration-150 ease-in hover:bg-slate-800 hover:text-white"
+          href="https://github.com/Xysar"
+          target="_blank"
+        >
+          Github
+        </a>
+      </li>
+      <li class="text-center">
+        <a
+          class="inline-block w-full px-5 py-2 duration-150 ease-in hover:bg-slate-800 hover:text-white"
+          href="https://www.linkedin.com/in/cesarcamacho760/"
+          target="_blank"
+        >
+          LinkedIn
+        </a>
+      </li>
+      <li class="text-center">
+        <a
+          class="inline-block w-full px-5 py-2 duration-150 ease-in hover:bg-slate-800 hover:text-white"
+          href="/resume"
+        >
+          Resume
+        </a>
+      </li>
+      <li class="text-center">
+        <a href="" class=""> Portfolio </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 80 ||
+      document.documentElement.scrollTop > 80
+    ) {
+      document.getElementById("navbar")!.style.padding = "30px 10px";
+    } else {
+      document.getElementById("navbar")!.style.padding = "80px 10px";
+    }
+  }
+
+  const menuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  let toggle: boolean = true;
+
+  const makeMenuVisible = () => {
+    if (toggle) {
+      mobileMenu.style.visibility = "hidden";
+      mobileMenu.style.marginTop = "-300px";
+    } else {
+      mobileMenu.style.visibility = "visible";
+      mobileMenu.style.display = "flex";
+      mobileMenu.style.marginTop = "0px";
+    }
+  };
+
+  menuButton.addEventListener("click", () => makeMenuVisible());
+</script>
