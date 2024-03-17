@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 80 ||
+      document.documentElement.scrollTop > 80
+    ) {
+      document.getElementById("navbar")!.style.padding = "30px 10px";
+    } else {
+      document.getElementById("navbar")!.style.padding = "80px 10px";
+    }
+  }
+
+  useEffect(() => {
+    window.onscroll = function () {
+      scrollFunction();
+    };
+  }, []);
+
   return (
-    <nav className="relative  border border-slate-100">
+    <nav className="sticky top-0  border border-slate-100">
       <div className=" m-auto max-w-[1400px] ">
-        <div className=" flex items-center justify-center py-6 px-6  h-[160px]">
+        <div
+          className=" flex items-center justify-center py-6 px-6 duration-75"
+          id="navbar"
+        >
           <a className="flex-1 text-3xl font-bold" href="/">
             Cesar Camacho
           </a>

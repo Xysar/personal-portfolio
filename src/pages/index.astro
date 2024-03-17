@@ -7,7 +7,9 @@ import Navbar from "../components/Navbar";
 <Layout title="Welcome to Astro.">
   <main>
     <div class="text-white text-xl">
-      <Navbar />
+      <Navbar client:load />
+      <div class="h-[4000px]"></div>
+
       Wow
     </div>
   </main>
