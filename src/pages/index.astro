@@ -1,16 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <div class="text-white text-xl">
-      <Navbar client:load />
-      <div class="h-[4000px]"></div>
-
-      Wow
+      <Navbar />
+      <div class="h-[3000px]"></div>
     </div>
   </main>
 </Layout>
