@@ -1,4 +1,4 @@
-<nav class="sticky top-0 border border-slate-300">
+<nav class="fixed w-full top-0 border border-slate-300">
   <div class="m-auto max-w-[1400px]">
     <div
       class="flex items-center justify-center py-6 px-6 duration-300"
@@ -48,7 +48,7 @@
     </div>
     <ul
       id="mobile-menu"
-      class="none -mt-[300px] duration-300 flex-col bg-slate-500 pt-24"
+      class="hidden -mt-[300px] duration-300 flex-col bg-slate-500 pt-24"
     >
       <li class="bg-slate-500 text-center">
         <a
@@ -94,8 +94,10 @@
       document.documentElement.scrollTop > 80
     ) {
       document.getElementById("navbar")!.style.padding = "30px 10px";
+      console.log("test1");
     } else {
-      document.getElementById("navbar")!.style.padding = "80px 10px";
+      document.getElementById("navbar")!.style.padding = "60px 10px";
+      console.log("test2");
     }
   }
 
@@ -105,15 +107,10 @@
   let toggle: boolean = true;
 
   const makeMenuVisible = () => {
-    if (toggle) {
-      mobileMenu.style.visibility = "hidden";
-      mobileMenu.style.marginTop = "-300px";
-    } else {
-      mobileMenu.style.visibility = "visible";
-      mobileMenu.style.display = "flex";
-      mobileMenu.style.marginTop = "0px";
-    }
+    toggle = !toggle;
+
+    mobileMenu!.style.display = toggle ? "block" : "none";
   };
 
-  menuButton.addEventListener("click", () => makeMenuVisible());
+  menuButton!.addEventListener("click", () => makeMenuVisible());
 </script>
