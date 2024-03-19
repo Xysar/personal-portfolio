@@ -1,5 +1,5 @@
 <nav class="fixed w-full top-0 bg-zinc-700">
-  <div class="m-auto max-w-[1400px]">
+  <div class="relative m-auto max-w-[1400px]">
     <div
       class="relative flex items-center justify-center py-[60px] px-[10px] duration-300 z-10"
       id="navbar"
@@ -37,7 +37,7 @@
         </li>
       </ul>
       <div class="flex flex-1 justify-end md:hidden">
-        <button id="mobile-menu-button" class="z-[1] flex items-center">
+        <button id="mobile-menu-button" class="flex items-center">
           <img
             src="menu.svg"
             alt="Menu"
@@ -113,7 +113,7 @@
     toggle = !toggle;
 
     mobileMenu!.style.visibility = toggle ? "visible" : "hidden";
-    mobileMenu!.style.marginTop = toggle ? "0px" : "-300px";
+    mobileMenu!.style.marginTop = toggle ? "0px" : "-200px";
   };
 
   menuButton!.addEventListener("click", () => makeMenuVisible());
