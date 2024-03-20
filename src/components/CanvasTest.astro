@@ -1,0 +1,99 @@
+<canvas id="hero"></canvas>
+
+<style>
+  #hero {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background: #212539;
+    z-index: 0;
+    width: 100vw;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  const cvs = document.querySelector("canvas");
+
+  const c = cvs.getContext("2d");
+
+  cvs.width = window.innerWidth;
+  cvs.height = window.innerHeight;
+
+  window.addEventListener("resize", function () {
+    cvs.width = window.innerWidth;
+    cvs.height = window.innerHeight;
+  });
+  let mouse = {
+    x: undefined,
+    y: undefined,
+  };
+
+  window.addEventListener("mousemove", function (e) {
+    mouse.x = event.x;
+    mouse.y = event.y;
+  });
+  class Circle {
+    constructor(x, y, width) {
+      this.x = x;
+      this.y = y;
+
+      this.width = width;
+      this.minWidth = width;
+      this.maxWidth = width * 2;
+
+      let colorArray = ["#F2EBE3"];
+
+      this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
+    }
+
+    draw = () => {
+      c.beginPath();
+
+      c.arc(this.x, this.y, this.width, 0, 2 * Math.PI);
+
+      c.fillStyle = this.color;
+      c.fill();
+
+      this.update();
+    };
+
+    update = () => {
+      // interactivity
+      if (
+        mouse.x - this.x < 10 &&
+        mouse.x - this.x > -10 &&
+        mouse.y - this.y < 10 &&
+        mouse.y - this.y > -10 &&
+        this.width < this.maxWidth
+      ) {
+        this.width *= 1.03;
+      } else if (this.width > this.minWidth) {
+        this.width -= 0.5;
+      }
+    };
+  }
+
+  let circleArray = [];
+  let width = 8;
+  let x = 0.8 * window.innerWidth;
+
+  let y = 0.2 * window.innerHeight;
+  circleArray.push(new Circle(x, y, width));
+  x = 0.9 * window.innerWidth;
+
+  y = 0.25 * window.innerHeight;
+
+  circleArray.push(new Circle(x, y, width));
+
+  function animate() {
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    circleArray.forEach((circle) => {
+      circle.draw();
+    });
+  }
+
+  animate();
+</script>
