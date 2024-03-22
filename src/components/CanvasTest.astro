@@ -1,56 +1,73 @@
-<canvas id="hero"></canvas>
+<div class="flex justify-center">
+  <canvas class="" id="hero">wow</canvas>
+</div>
 
 <style>
   #hero {
     margin: 0;
     padding: 0;
+
     position: absolute;
     background: #212539;
     z-index: 0;
-    width: 100vw;
-    overflow: hidden;
   }
 </style>
 
 <script>
-  const cvs = document.querySelector("canvas");
+  const cvs: HTMLCanvasElement = document.querySelector("canvas")!;
 
-  const c = cvs.getContext("2d");
+  const c: CanvasRenderingContext2D = cvs!.getContext("2d")!;
 
-  cvs.width = window.innerWidth;
+  cvs.width = Math.min(1400, window.innerWidth);
   cvs.height = window.innerHeight;
 
   window.addEventListener("resize", function () {
-    cvs.width = window.innerWidth;
+    cvs.width = Math.min(1400, window.innerWidth);
     cvs.height = window.innerHeight;
   });
-  let mouse = {
-    x: undefined,
-    y: undefined,
+
+  interface MouseCoordinate {
+    x: number;
+    y: number;
+  }
+
+  let mouse: MouseCoordinate = {
+    x: 0,
+    y: 0,
   };
 
-  window.addEventListener("mousemove", function (e) {
-    mouse.x = event.x;
-    mouse.y = event.y;
+  window.addEventListener("mousemove", function (e: MouseEvent) {
+    mouse.x = e.x;
+    mouse.y = e.y;
   });
   class Circle {
-    constructor(x, y, width) {
+    x: number;
+    y: number;
+    width: number;
+    minWidth: number;
+    maxWidth: number;
+    color: string;
+    constructor(x: number, y: number, width: number) {
       this.x = x;
       this.y = y;
 
       this.width = width;
       this.minWidth = width;
-      this.maxWidth = width * 2;
+      this.maxWidth = width * 1.6;
 
-      let colorArray = ["#F2EBE3"];
-
-      this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
+      this.color = "#F2EBE3";
     }
 
     draw = () => {
       c.beginPath();
 
-      c.arc(this.x, this.y, this.width, 0, 2 * Math.PI);
+      c.arc(
+        this.x * cvs.width,
+        this.y * cvs.height,
+        this.width,
+        0,
+        2 * Math.PI
+      );
 
       c.fillStyle = this.color;
       c.fill();
@@ -61,28 +78,32 @@
     update = () => {
       // interactivity
       if (
-        mouse.x - this.x < 10 &&
-        mouse.x - this.x > -10 &&
-        mouse.y - this.y < 10 &&
-        mouse.y - this.y > -10 &&
+        mouse.x - this.x * window.innerWidth < 10 &&
+        mouse.x - this.x * window.innerWidth > -10 &&
+        mouse.y - this.y * window.innerHeight < 10 &&
+        mouse.y - this.y * window.innerHeight > -10 &&
         this.width < this.maxWidth
       ) {
-        this.width *= 1.03;
+        this.width += 0.5;
       } else if (this.width > this.minWidth) {
         this.width -= 0.5;
+      }
+
+      if (this.x > window.innerWidth) {
+        this.x = 0.8 * window.innerWidth;
       }
     };
   }
 
-  let circleArray = [];
+  let circleArray: Circle[] = [];
   let width = 8;
-  let x = 0.8 * window.innerWidth;
+  let x = 0.8;
 
-  let y = 0.2 * window.innerHeight;
+  let y = 0.2;
   circleArray.push(new Circle(x, y, width));
-  x = 0.9 * window.innerWidth;
+  x = 0.9;
 
-  y = 0.25 * window.innerHeight;
+  y = 0.25;
 
   circleArray.push(new Circle(x, y, width));
 
