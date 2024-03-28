@@ -1,0 +1,77 @@
+<canvas id="canvas"></canvas>
+
+<script>
+  const canvas: HTMLCanvasElement = document.querySelector("canvas")!;
+  const ctx = canvas!.getContext("2d")!;
+
+  // Set canvas size
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let animationFrame = 0;
+  // Box object
+  const box = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    width: 50,
+    height: 50,
+    speed: 2,
+    vx: 0,
+    vy: 0,
+  };
+
+  // Update function
+  function update() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    box.x += box.vx;
+    box.y += box.vy;
+    // Move towards the center
+    const dx = canvas.width / 2 - box.x;
+    const dy = canvas.height / 2 - box.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const angle = Math.atan2(dy, dx);
+
+    box.vx = 0.5 * Math.cos(angle) * box.speed;
+    box.vy = 0.5 * Math.sin(angle) * box.speed;
+
+    if (distance > 5) {
+      box.x += box.vx;
+      box.y += box.vy;
+    }
+
+    // Random movement
+
+    box.x += 3 * Math.sin(0.02 * animationFrame);
+
+    // Draw the box
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(
+      box.x - box.width / 2,
+      box.y - box.height / 2,
+      box.width,
+      box.height
+    );
+    animationFrame++;
+    // Request animation frame
+    requestAnimationFrame(update);
+  }
+
+  // Mouse move event listener
+  canvas.addEventListener("mousemove", (event) => {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    const dx = mouseX - box.x;
+    const dy = mouseY - box.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 100) {
+      box.vx = (mouseX - box.x) / 50;
+      box.vy = (mouseY - box.y) / 50;
+    }
+  });
+
+  // Start animation
+
+  update();
+</script>

@@ -1,50 +1,58 @@
 <div class="mt-20 max-w-[1400px] m-auto">
   <h1 class="text-5xl text-center mb-20">Projects</h1>
   <div
-    class="w-80 rounded-lg bg-white p-4 shadow-sm duration-150 ease-in hover:shadow-xl"
+    class="flex flex-col md:flex-row-reverse justify-center gap-10 mx-10 mb-10"
   >
-    <div class="relative mb-6 overflow-hidden rounded-lg">
+    <div class="flex-1 relative mb-6 overflow-hidden rounded-lg">
       <img
-        class="m-auto h-72 w-72 object-contain"
+        class="m-auto object-contain"
         src="/jorgeportfolioscreenshot.png"
         alt="screenshot of photography portfolio project"
       />
-      <div
-        class="absolute top-0 flex h-full w-full flex-col items-center justify-center gap-2 bg-slate-900 opacity-0 duration-100 ease-in hover:opacity-90"
-      >
-        <div class="">
-          <a
-            href="https://github.com/Xysar/photo-portfolio-nextjs"
-            target="_blank"
-            class="inline-block rounded-full border-2 border-yellow-400 py-2 px-3 text-yellow-400 hover:bg-yellow-400 hover:text-black"
-          >
-            Github Repo
-          </a>
-        </div>
-        <div class="">
-          <a
-            href="https://photo-portfolio-nextjs.vercel.app/"
-            target="_blank"
-            class="inline-block rounded-full border-2 border-yellow-400 py-2 px-3 text-yellow-400 hover:bg-yellow-400 hover:text-black"
-          >
-            Open Project
-          </a>
-        </div>
+    </div>
+    <div class="flex-1 text-white">
+      <h1 class="mb-3 text-center font-bold">Photography Portfolio</h1>
+      <p class="mb-3 text-base font-sans">
+        Portfolio website website for showcasing photographer's portfolio. I
+        utilized Sanity CMS as a backend to allow client to readily change the
+        contents of pages and descriptions. This combined with the Serverside
+        rendering of NextJS allows pages to be created dynamically, and for
+        their contents to be edited dynamically.
+      </p>
+      <div class="flex flex-wrap gap-1">
+        <p class="inline-block bg-navy px-2 py-1 text-white">Next.js</p>
+        <p class="inline-block bg-navy px-2 py-1 text-white">React</p>
+        <p class="inline-block bg-navy px-2 py-1 text-white">
+          {" "}
+          Sanity
+        </p>
       </div>
     </div>
-    <h1 class="mb-3 text-center font-bold text-navy">Photography Portfolio</h1>
-    <p class="mb-3 text-navy">
-      Portfolio website showcasing photography, uses Sanity headless CMS to
-      allow client to freely edit
-    </p>
-    <div class="flex flex-wrap gap-1">
-      <p class="inline-block bg-navy px-2 py-1 text-white">Next.js</p>
-      <p class="inline-block bg-navy px-2 py-1 text-white">React</p>
-
-      <p class="inline-block bg-navy px-2 py-1 text-white">
-        {" "}
-        Sanity
+  </div>
+  <div
+    class="flex flex-col md:flex-row-reverse justify-center gap-10 mx-10 mb-10"
+  >
+    <div class="flex-1 relative mb-6 overflow-hidden rounded-lg">
+      <img
+        class="m-auto object-contain"
+        src="/jorgeportfolioscreenshot.png"
+        alt="screenshot of photography portfolio project"
+      />
+    </div>
+    <div class="flex-1 text-white">
+      <h1 class="mb-3 text-center font-bold">Music Inbox</h1>
+      <p class="mb-3 text-base font-sans">
+        Music review site that uses LastFM's API and a backend built using
+        Prisma.
       </p>
+      <div class="flex flex-wrap gap-1">
+        <p class="inline-block bg-navy px-2 py-1 text-white">Next.js</p>
+        <p class="inline-block bg-navy px-2 py-1 text-white">React</p>
+        <p class="inline-block bg-navy px-2 py-1 text-white">
+          {" "}
+          Sanity
+        </p>
+      </div>
     </div>
   </div>
 </div>

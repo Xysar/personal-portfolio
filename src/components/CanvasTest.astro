@@ -1,4 +1,8 @@
-<div class="flex justify-center">
+<div class="flex justify-center opacity-80">
+  <div
+    class="w-[300px] h-[300px] from-neutral-500 to-90% top-[200px] to-navy blur-[100px] absolute z-10 bg-gradient-to-br"
+  >
+  </div>
   <canvas class="" id="hero">wow</canvas>
 </div>
 
@@ -6,7 +10,6 @@
   #hero {
     margin: 0;
     padding: 0;
-
     position: absolute;
     background: #212539;
     z-index: 0;
@@ -35,7 +38,13 @@
     x: 0,
     y: 0,
   };
-
+  function getMousePos(cvs, evt) {
+    var rect = cvs.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top,
+    };
+  }
   window.addEventListener("mousemove", function (e: MouseEvent) {
     mouse.x = e.x;
     mouse.y = e.y;
@@ -43,6 +52,9 @@
   class Circle {
     x: number;
     y: number;
+    speed: number;
+    vx: number;
+    vy: number;
     width: number;
     minWidth: number;
     maxWidth: number;
@@ -50,7 +62,9 @@
     constructor(x: number, y: number, width: number) {
       this.x = x;
       this.y = y;
-
+      this.speed = 2;
+      this.vx = 0;
+      this.vy = 0;
       this.width = width;
       this.minWidth = width;
       this.maxWidth = width * 1.6;
@@ -77,11 +91,12 @@
 
     update = () => {
       // interactivity
+
       if (
-        mouse.x - this.x * window.innerWidth < 10 &&
-        mouse.x - this.x * window.innerWidth > -10 &&
-        mouse.y - this.y * window.innerHeight < 10 &&
-        mouse.y - this.y * window.innerHeight > -10 &&
+        mouse.x - this.x * cvs.width < 10 &&
+        mouse.x - this.x * cvs.width > -10 &&
+        mouse.y - this.y * cvs.height < 10 &&
+        mouse.y - this.y * cvs.height > -10 &&
         this.width < this.maxWidth
       ) {
         this.width += 0.5;
@@ -89,21 +104,24 @@
         this.width -= 0.5;
       }
 
-      if (this.x > window.innerWidth) {
-        this.x = 0.8 * window.innerWidth;
+      const dx = mouse.x - this.x * cvs.width;
+      const dy = mouse.y - this.y * cvs.height;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 100) {
+        this.vx = (mouse.x - this.x * cvs.width) / 50;
+        this.vy = (mouse.y - this.y * cvs.height) / 50;
       }
     };
   }
-
+  let animationFrame = 0;
   let circleArray: Circle[] = [];
   let width = 8;
   let x = 0.8;
-
-  let y = 0.2;
+  let y = 0.3;
   circleArray.push(new Circle(x, y, width));
   x = 0.9;
-
-  y = 0.25;
+  y = 0.35;
 
   circleArray.push(new Circle(x, y, width));
 
@@ -111,9 +129,22 @@
     requestAnimationFrame(animate);
     c.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
+    let prevCircle: Circle | null = null;
     circleArray.forEach((circle) => {
+      circle.x += 0.00004 * Math.sin(0.02 * animationFrame);
+
+      if (prevCircle) {
+        c.beginPath(); // Start a new path
+        c.strokeStyle = "#F2EBE3";
+        c.lineWidth = 2;
+        c.moveTo(prevCircle.x * cvs.width, prevCircle.y * cvs.height);
+        c.lineTo(circle.x * cvs.width, circle.y * cvs.height); // Draw a line to (150, 100)
+        c.stroke(); // Render the path
+      }
       circle.draw();
+      prevCircle = circle;
     });
+    animationFrame++;
   }
 
   animate();
