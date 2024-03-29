@@ -8,6 +8,7 @@ export default {
       },
       fontFamily: {
         league: ["league-spartan, sans-serif"],
+        opensans: ["open-sans,sans-serif"],
       },
     },
   },

@@ -1,5 +1,13 @@
 <div class="h-screen relative">
-  <div class="absolute w-full h-full opacity-60">
+  <div class="absolute w-full h-full opacity-60 z-0">
+    <div
+      class="-z-10 md:block hidden h-[600px] w-[600px] rounded-full border-2 -top-[300px] -left-[250px] absolute"
+    >
+    </div>
+    <div
+      class="-z-10 md:block hidden h-[550px] w-[550px] rounded-full border-2 -top-[250px] -left-[250px] absolute"
+    >
+    </div>
     <div
       class="-z-10 md:block hidden h-[600px] w-[600px] rounded-full border-2 -bottom-[300px] -left-[250px] absolute"
     >
@@ -10,16 +18,23 @@
     </div>
   </div>
   <div
-    class="flex sm:flex-row flex-col-reverse justify-center items-center h-full gap-10"
+    class="relative flex sm:flex-row flex-col-reverse justify-center items-center h-full z-10 gap-10"
   >
     <div class="">
       <h1 class="text-3xl">Hi I'm Cesar</h1>
+      <h2 class="text-xl text-slate-300 font-opensans">
+        Software Developer specializing in web
+      </h2>
     </div>
-    <div class="">
+    <div class="relative">
+      <div
+        class="absolute w-96 h-96 rounded-full border-r border-t m-auto left-0 top-0 bottom-0"
+      >
+      </div>
       <img
         src="/profile-pic.jpg"
         alt="portrait of Cesar Camacho"
-        class="w-40 h-40 rounded-full"
+        class="w-64 h-64 rounded-full"
       />
     </div>
   </div>

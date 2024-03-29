@@ -1,7 +1,14 @@
-<nav class="fixed w-full top-0 bg-navy z-10 border-b-white border-b">
+---
+const NavbarVertPaddingExpanded = "py-10";
+const NavbarVertPaddingClosed = "py-5";
+---
+
+<nav class="fixed w-full top-0 bg-navy z-20 border-b-white border-b">
   <div class="relative m-auto max-w-[1400px]">
     <div
-      class="relative flex items-center justify-center py-[50px] px-[10px] mx-10 duration-300 gap-2 z-10"
+      data-expanded={NavbarVertPaddingExpanded}
+      data-closed={NavbarVertPaddingClosed}
+      class={`relative flex items-center justify-center ${NavbarVertPaddingExpanded} px-10 mx-10 duration-300 gap-2 z-10`}
       id="navbar"
     >
       <a class="flex-1 text-3xl font-league" href="/"> Cesar Camacho </a>
@@ -102,15 +109,20 @@
   window.onscroll = function () {
     scrollFunction();
   };
+  const navbar = document.getElementById("navbar")!;
+  const closed: string = navbar.dataset.closed!;
+  const expanded: string = navbar.dataset.expanded!;
 
   function scrollFunction() {
     if (
       document.body.scrollTop > 80 ||
       document.documentElement.scrollTop > 80
     ) {
-      document.getElementById("navbar")!.style.padding = "30px 10px";
+      navbar.classList.remove(expanded);
+      navbar.classList.add(closed);
     } else {
-      document.getElementById("navbar")!.style.padding = "60px 10px";
+      navbar.classList.remove(closed);
+      navbar.classList.add(expanded);
     }
   }
 
