@@ -8,11 +8,11 @@ const NavbarVertPaddingClosed = "py-5";
     <div
       data-expanded={NavbarVertPaddingExpanded}
       data-closed={NavbarVertPaddingClosed}
-      class={`relative flex items-center justify-center ${NavbarVertPaddingExpanded} px-10 mx-10 duration-300 gap-2 z-10`}
+      class={`relative flex items-center justify-center ${NavbarVertPaddingExpanded} md:px-10 px-5 md:mx-10 duration-300 gap-2 z-10`}
       id="navbar"
     >
       <a class="flex-1 text-3xl font-league" href="/"> Cesar Camacho </a>
-      <ul class="hidden justify-end gap-12 text-base md:flex">
+      <ul class="hidden justify-end gap-12 text-base lg:flex">
         <li class="flex-1">
           <a
             class="rounded-xl px-5 pt-3 pb-2 duration-150 ease-in hover:bg-zinc-100 hover:text-navy"
@@ -48,10 +48,10 @@ const NavbarVertPaddingClosed = "py-5";
           </a>
         </li>
       </ul>
-      <div class="flex flex-1 justify-end md:hidden">
+      <div class="flex flex-1 justify-end lg:hidden">
         <button id="mobile-menu-button" class="flex items-center">
           <img
-            src="menu.svg"
+            src="assets/menu.svg"
             alt="Menu"
             class="h-14 w-14 cursor-pointer object-contain p-2"
           />
