@@ -3,7 +3,10 @@
   <div
     class="flex flex-col md:flex-row-reverse justify-center gap-10 mx-10 mb-12"
   >
-    <div class="flex-1 relative mb-6 overflow-hidden rounded-lg">
+    <div
+      class="flex-1 relative mb-6 overflow-hidden duration-300 rounded-lg"
+      id="project-image"
+    >
       <img
         class="m-auto object-contain"
         src="assets/jorgeportfolioscreenshot.png"
@@ -21,13 +24,25 @@
         NextJS allows pages to be created dynamically, and for their contents to
         be edited dynamically.
       </p>
-      <div class="flex flex-wrap gap-1">
+      <div class="flex flex-wrap gap-1 mb-3">
         <p class="inline-block bg-navy px-2 py-1 text-white">Next.js</p>
         <p class="inline-block bg-navy px-2 py-1 text-white">React</p>
         <p class="inline-block bg-navy px-2 py-1 text-white">
           {" "}
           Sanity
         </p>
+      </div>
+      <div class="">
+        <a
+          href="#"
+          class="border-2 text-lg duration-100 ease-in font-opensans py-2 px-3 border-yellow-500 rounded-full inline-block mr-2 hover:bg-yellow-400 hover:text-black"
+          >Open Project</a
+        >
+        <a
+          href="#"
+          class="border-2 text-lg duration-100 ease-in font-opensans py-2 px-3 text-center border-yellow-500 rounded-full inline-block hover:bg-yellow-400 hover:text-black"
+          >Github Repo</a
+        >
       </div>
     </div>
   </div>
@@ -59,3 +74,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  const projectImage = document.getElementById("project-image");
+  projectImage.addEventListener("mouseover", () => {
+    projectImage.style.transform = "rotate(15deg)";
+  });
+  projectImage.addEventListener("mouseout", () => {
+    projectImage.style.transform = "rotate(0deg)";
+  });
+</script>
