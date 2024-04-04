@@ -3,31 +3,46 @@
   <div
     class="flex flex-col md:flex-row-reverse justify-center gap-10 mx-10 mb-12"
   >
-    <div
-      class="flex-1 relative mb-6 overflow-hidden duration-300 rounded-lg"
-      id="project-image"
-    >
+    <div class="flex-1 relative mb-6 rounded-lg h-[500px]">
       <img
-        class="m-auto object-contain"
-        src="assets/jorgeportfolioscreenshot.png"
+        class="m-auto absolute object-contain h-full duration-300 rounded-md"
+        src="assets/photoportfolio.png"
         alt="screenshot of photography portfolio project"
+        id="left-photoportfolio-image"
+      />
+      <img
+        class="m-auto absolute object-cover object-right w-[550px] h-[350px] duration-300 right-0 top-0 bottom-0 rounded-md"
+        src="assets/photoportfoliosanity.png"
+        alt="screenshot of photography portfolio sanity backend "
+        id="right-photoportfolio-image"
       />
     </div>
     <div class="flex-1 text-white">
       <div class="bg-white w-8 h-1 m-auto mb-6"></div>
       <h1 class="mb-3 text-center font-bold">Photography Portfolio</h1>
-      <p class="mb-3 text-base font-opensans">
+      <p class="mb-6 text-base font-opensans">
         Portfolio website website for showcasing photographer's portfolio. I
-        utilized Sanity CMS as a backend to allow client to readily change the
-        contents of pages and descriptions.
+        used Sanity CMS as the backend to allow the client to readily change the
+        contents of gallery pages and photo captions.
         <br /><br /> This combined with the server side rendering capabilities of
-        NextJS allows pages to be created dynamically, and for their contents to
-        be edited dynamically.
+        NextJS allows the client to create a new photo collection while automatically
+        creating a page for it. This alongside with NextJS's image optimization and
+        Sanity's CDN system the page delivers quality images with low load times.
       </p>
-      <div class="flex flex-wrap gap-1 mb-3">
-        <p class="inline-block bg-navy px-2 py-1 text-white">Next.js</p>
-        <p class="inline-block bg-navy px-2 py-1 text-white">React</p>
-        <p class="inline-block bg-navy px-2 py-1 text-white">
+      <div class="flex flex-wrap gap-1 mb-10">
+        <p
+          class="inline-block bg-white px-2 pt-2 pb-1 text-base text-center text-navy"
+        >
+          Next.js
+        </p>
+        <p
+          class="inline-block bg-slate-200 px-2 pt-2 pb-1 text-base text-center text-navy"
+        >
+          React
+        </p>
+        <p
+          class="inline-block bg-slate-300 px-2 pt-2 pb-1 text-base text-center text-navy"
+        >
           {" "}
           Sanity
         </p>
@@ -35,12 +50,12 @@
       <div class="">
         <a
           href="#"
-          class="border-2 text-lg duration-100 ease-in font-opensans py-2 px-3 border-yellow-500 rounded-full inline-block mr-2 hover:bg-yellow-400 hover:text-black"
+          class="border-2 text-base duration-100 w-36 text-center ease-in font-league pt-3 pb-2 px-3 border-yellow-500 rounded-full inline-block mr-2 hover:bg-yellow-400 hover:text-black"
           >Open Project</a
         >
         <a
           href="#"
-          class="border-2 text-lg duration-100 ease-in font-opensans py-2 px-3 text-center border-yellow-500 rounded-full inline-block hover:bg-yellow-400 hover:text-black"
+          class="border-2 text-base duration-100 w-36 text-center ease-in font-league pt-3 pb-2 px-3 border-yellow-500 rounded-full inline-block hover:bg-yellow-400 hover:text-black"
           >Github Repo</a
         >
       </div>
@@ -61,14 +76,28 @@
       <h1 class="mb-3 text-center font-bold">Music Inbox</h1>
       <p class="mb-3 text-base font-sans">
         Music review site that uses LastFM's API and a backend built using
-        Prisma.
+        Prisma. Users can create accounts to log reviews for albums, and leave
+        their ratings.
+        <br />
+        <br />The prisma backend uses a Postgres SQL database that stores all
+        account, album, and review information.
       </p>
       <div class="flex flex-wrap gap-1">
-        <p class="inline-block bg-navy px-2 py-1 text-white">Next.js</p>
-        <p class="inline-block bg-navy px-2 py-1 text-white">React</p>
-        <p class="inline-block bg-navy px-2 py-1 text-white">
+        <p
+          class="inline-block bg-white px-2 pt-2 pb-1 text-base text-center text-navy"
+        >
+          Next.js
+        </p>
+        <p
+          class="inline-block bg-slate-200 px-2 pt-2 pb-1 text-base text-center text-navy"
+        >
+          React
+        </p>
+        <p
+          class="inline-block bg-slate-300 px-2 pt-2 pb-1 text-base text-center text-navy"
+        >
           {" "}
-          Sanity
+          Prisma
         </p>
       </div>
     </div>
@@ -76,11 +105,26 @@
 </div>
 
 <script>
-  const projectImage = document.getElementById("project-image");
-  projectImage.addEventListener("mouseover", () => {
-    projectImage.style.transform = "rotate(15deg)";
+  const leftPortfolioImage = document.getElementById(
+    "left-photoportfolio-image"
+  )!;
+  leftPortfolioImage.addEventListener("mouseover", () => {
+    leftPortfolioImage.style.transform = "translate(-25px) rotate(-2deg)";
+    leftPortfolioImage.style.zIndex = "1";
+    rightPortfolioImage.style.zIndex = "0";
   });
-  projectImage.addEventListener("mouseout", () => {
-    projectImage.style.transform = "rotate(0deg)";
+  leftPortfolioImage.addEventListener("mouseout", () => {
+    leftPortfolioImage.style.transform = "rotate(0deg)";
+  });
+  const rightPortfolioImage = document.getElementById(
+    "right-photoportfolio-image"
+  )!;
+  rightPortfolioImage.addEventListener("mouseover", () => {
+    rightPortfolioImage.style.transform = "translate(25px) rotate(2deg)";
+    leftPortfolioImage.style.zIndex = "0";
+    rightPortfolioImage.style.zIndex = "1";
+  });
+  rightPortfolioImage.addEventListener("mouseout", () => {
+    rightPortfolioImage.style.transform = "rotate(0deg)";
   });
 </script>
