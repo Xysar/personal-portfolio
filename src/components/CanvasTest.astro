@@ -38,7 +38,7 @@
     x: 0,
     y: 0,
   };
-  function getMousePos(cvs, evt) {
+  function getMousePos(cvs: any, evt: any) {
     var rect = cvs.getBoundingClientRect();
     return {
       x: evt.clientX - rect.left,
