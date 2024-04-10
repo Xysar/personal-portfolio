@@ -1,17 +1,18 @@
-<div class="max-w-[1400px] m-auto">
+<section class="max-w-[1400px] m-auto mb-20">
   <h1 id="portfolio" class="text-5xl text-center mb-20">Projects</h1>
   <div
-    class="flex flex-col md:flex-row-reverse justify-center gap-10 mx-10 mb-12"
+    class="flex flex-col md:flex-row-reverse justify-center gap-10 mx-10 mb-24"
   >
-    <div class="flex-1 relative mb-6 rounded-lg h-[500px]">
+    <div class="flex-1 relative mb-6 rounded-lg">
+      <div class="absolute w-full h-full bg-slate-700 blur-3xl -z-10"></div>
       <img
-        class="m-auto absolute object-contain h-full duration-300 rounded-md shadow-lg shadow-black z-[1]"
+        class="m-auto w-full object-cover object-top h-[600px] md:absolute md:object-contain md:h-full duration-300 rounded-md shadow-lg shadow-black z-[1]"
         src="assets/photoportfolio.png"
         alt="screenshot of photography portfolio project"
         id="left-photoportfolio-image"
       />
       <img
-        class="m-auto absolute object-cover object-right w-[550px] h-[350px] duration-300 shadow-lg shadow-black right-0 top-0 bottom-0 rounded-md"
+        class="m-auto hidden md:absolute object-cover object-right w-[550px] h-[350px] duration-300 shadow-lg shadow-black right-0 top-0 bottom-0 rounded-md"
         src="assets/photoportfoliosanity.png"
         alt="screenshot of photography portfolio sanity backend "
         id="right-photoportfolio-image"
@@ -50,7 +51,7 @@
       <div class="">
         <a
           href="#"
-          class="border-2 text-base duration-100 w-36 text-center ease-in font-league pt-3 pb-2 px-3 border-yellow-500 rounded-full inline-block mr-2 hover:bg-yellow-400 hover:text-black"
+          class="border-2 text-base duration-100 w-36 text-center ease-in font-league pt-3 pb-2 px-3 border-yellow-500 rounded-full inline-block mr-2 mb-2 hover:bg-yellow-400 hover:text-black"
           >Open Project</a
         >
         <a
@@ -64,9 +65,8 @@
   <div
     class="flex flex-col md:flex-row-reverse justify-center gap-10 mx-10 mb-10"
   >
-    <div
-      class="flex-1 relative mb-6 overflow-hidden rounded-lg shadow-black shadow-lg"
-    >
+    <div class="flex-1 relative mb-6 rounded-lg shadow-black shadow-lg">
+      <div class="absolute w-full h-full bg-slate-700 blur-3xl -z-10"></div>
       <img
         class="m-auto object-contain"
         src="assets/music-inbox.png"
@@ -104,7 +104,7 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <script>
   const leftPortfolioImage = document.getElementById(
