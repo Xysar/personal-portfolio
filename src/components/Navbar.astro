@@ -43,17 +43,12 @@ const NavbarVertPaddingClosed = "py-5";
           </a>
         </li>
       </ul>
-      <div
-        class="flex
-            flex-1
-            justify-end
-            lg:hidden"
-      >
+      <div class="flex flex-1 justify-end lg:hidden">
         <button id="mobile-menu-button" class="flex items-center">
           <img
             src="assets/menu.svg"
-            alt="Menu"
-            class="h-14 w-14 cursor-pointer object-contain p-2"
+            alt="Menu button"
+            class="filter-white h-14 w-14 cursor-pointer object-contain p-2"
           />
         </button>
       </div>
@@ -94,6 +89,10 @@ const NavbarVertPaddingClosed = "py-5";
 <style>
   h1 {
     font-family: "leaguespartan", sans-serif;
+  }
+  .filter-white {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(260deg)
+      brightness(102%) contrast(105%);
   }
 </style>
 
