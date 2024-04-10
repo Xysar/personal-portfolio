@@ -8,7 +8,7 @@ const NavbarVertPaddingClosed = "py-5";
     <div
       data-expanded={NavbarVertPaddingExpanded}
       data-closed={NavbarVertPaddingClosed}
-      class={`relative flex items-center justify-center ${NavbarVertPaddingExpanded} md:px-10 px-5 md:mx-10 duration-300  bg-navy gap-2 z-50`}
+      class={`relative flex items-center justify-center ${NavbarVertPaddingExpanded} md:px-10 px-5 z-20  duration-300  bg-navy gap-2 `}
       id="navbar"
     >
       <a class="flex-1 text-3xl font-league pt-2 pb-1" href="/">
@@ -33,14 +33,7 @@ const NavbarVertPaddingClosed = "py-5";
             LinkedIn
           </a>
         </li>
-        <li class="flex-1">
-          <a
-            class="rounded-xl px-5 pt-3 pb-2 duration-150 ease-in hover:bg-zinc-100 hover:text-navy"
-            href="resume"
-          >
-            Resume
-          </a>
-        </li>
+
         <li class="flex-1">
           <a
             href="#portfolio"
@@ -67,7 +60,7 @@ const NavbarVertPaddingClosed = "py-5";
     </div>
     <ul
       id="mobile-menu"
-      class="invisible absolute w-full z-10 -mt-[200px] duration-500 flex-col bg-slate-700"
+      class="invisible lg:hidden absolute w-full z-10 -mt-[200px] duration-500 flex-col bg-slate-700"
     >
       <li class="bg-slate-500 text-center">
         <a
@@ -85,14 +78,6 @@ const NavbarVertPaddingClosed = "py-5";
           target="_blank"
         >
           LinkedIn
-        </a>
-      </li>
-      <li class="text-center">
-        <a
-          class="inline-block w-full px-5 py-2 duration-150 ease-in hover:bg-slate-800 hover:text-white"
-          href="/resume"
-        >
-          Resume
         </a>
       </li>
       <li class="text-center">
