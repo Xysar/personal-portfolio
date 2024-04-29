@@ -8,6 +8,7 @@ import Contact from "../components/Contact.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import Footer from "../components/Footer.astro";
+import SlideShow from "../components/SlideShow";
 ---
 
 <Layout title="Cesar Camacho">
@@ -17,6 +18,7 @@ import Footer from "../components/Footer.astro";
       <Hero />
       <Experience />
       <Projects />
+      <SlideShow client:load />
       <Contact />
       <Footer />
     </div>
