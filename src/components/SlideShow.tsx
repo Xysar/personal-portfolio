@@ -7,7 +7,7 @@ const SlideShow = () => {
     console.log(slidePosition);
     if (direction === "left" && slidePosition < 0) {
       setSlidePosition((prev) => prev + 300);
-    } else if (direction === "right" && slidePosition > -1000) {
+    } else if (direction === "rightls" && slidePosition > -1000) {
       setSlidePosition((prev) => prev - 300);
     }
   };
